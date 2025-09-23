@@ -1,6 +1,8 @@
 import requests
 import re
 
+weights = [0, 1, 0, 0, 0, 0, 0, 0, 0]
+
 r = requests.get('https://www.numbeo.com/quality-of-life/rankings_by_country.jsp')
 r = r.text
 
@@ -28,4 +30,14 @@ for i in range(3):
 
     countries.append(values)
 
-print(countries)
+for i in countries:
+    pair = [i[0], '']
+    sum = 0
+    iterator = 0
+
+    for j in i[1::]:
+        sum += float(j) * weights[iterator]
+        pair[1] = sum
+        iterator += 1   
+
+    print(pair)
