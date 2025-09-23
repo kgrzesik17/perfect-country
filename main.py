@@ -6,15 +6,19 @@ r = r.text
 
 a = r.split('<tr')[3]
 b = a.split('<td style="text-align: right">')
-c = []
+values = []
+country_name = ''
 
 for i in b:
-    print(i)
-    # c.append(re.sub(r'<.+>', '', i))
     i = (re.sub(r'<.+>', '', i))
     i = re.sub("[^0-9\.]", "", i)
-    c.append(i)
+    values.append(i)
 
-del c[0]
+country = a.split('<td class="cityOrCountryInIndicesTable">')
 
-print(c)
+for i in country:
+    country_name = (re.sub(r'<.+>', '', i))
+
+country_name = country_name.split()
+
+print(country_name)
