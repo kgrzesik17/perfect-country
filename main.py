@@ -7,6 +7,7 @@ r = requests.get('https://www.numbeo.com/quality-of-life/rankings_by_country.jsp
 r = r.text
 
 countries = []
+pairs = []
 
 for i in range(3):
     a = r.split('<tr')[i + 3]
@@ -37,7 +38,11 @@ for i in countries:
 
     for j in i[1::]:
         sum += float(j) * weights[iterator]
-        pair[1] = sum
-        iterator += 1   
+        pair[1] = sum  #TODO: make values follow the same standard (e.g. by making them percentage of the max value)
+        iterator += 1
 
-    print(pair)
+    pairs.append(pair)
+
+sorted_pairs = sorted(pairs, key=lambda x: x[1], reverse=True)
+
+print(sorted_pairs)
