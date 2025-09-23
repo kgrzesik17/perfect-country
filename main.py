@@ -1,7 +1,8 @@
 import requests
 import re
 
-weights = [0, 1, 0, 0, 0, 0, 0, 0, 0]
+# ['Quality of Life Index', 'Purchasing Power Index', 'Safety Index', 'Health Care Index', 'Cost of Living Index', 'Property Price to Income Ratio', 'Traffic Commute Time Index', 'Pollution Index', 'Climate Index ']
+weights = [0, 100, 100, 50, -50, 0, 0, 20, 20]
 
 r = requests.get('https://www.numbeo.com/quality-of-life/rankings_by_country.jsp')
 r = r.text
@@ -9,7 +10,7 @@ r = r.text
 countries = []
 pairs = []
 
-for i in range(3):
+for i in range(20):
     a = r.split('<tr')[i + 3]
     b = a.split('<td style="text-align: right">')
     values = []
@@ -45,4 +46,5 @@ for i in countries:
 
 sorted_pairs = sorted(pairs, key=lambda x: x[1], reverse=True)
 
-print(sorted_pairs)
+for i in sorted_pairs:
+    print(i)
