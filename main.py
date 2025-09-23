@@ -12,7 +12,7 @@ countries = []  # countries with all the values
 pairs = []
 
 # add values to arrays
-for i in range(3):
+for i in range(30):
     a = r.split('<tr')[i + 3]
     b = a.split('<td style="text-align: right">')
     values = []  # QoL, purchasing power, etc.
@@ -59,8 +59,5 @@ for i in countries:
 
 sorted_pairs = sorted(pairs, key=lambda x: x[1], reverse=True)
 
-
-
-
-
-print(sorted_pairs)
+for i in sorted_pairs:
+    print(i)
