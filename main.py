@@ -4,21 +4,28 @@ import re
 r = requests.get('https://www.numbeo.com/quality-of-life/rankings_by_country.jsp')
 r = r.text
 
-a = r.split('<tr')[3]
-b = a.split('<td style="text-align: right">')
-values = []
-country_name = ''
+countries = []
 
-for i in b:
-    i = (re.sub(r'<.+>', '', i))
-    i = re.sub("[^0-9\.]", "", i)
-    values.append(i)
+for i in range(3):
+    a = r.split('<tr')[i + 3]
+    b = a.split('<td style="text-align: right">')
+    values = []
+    country_name = ''
 
-country = a.split('<td class="cityOrCountryInIndicesTable">')
+    for i in b:
+        i = (re.sub(r'<.+>', '', i))
+        i = re.sub("[^0-9\.]", "", i)
+        values.append(i)
 
-for i in country:
-    country_name = (re.sub(r'<.+>', '', i))
+    country = a.split('<td class="cityOrCountryInIndicesTable">')
 
-country_name = country_name.split()
+    for i in country:
+        country_name = (re.sub(r'<.+>', '', i))
 
-print(country_name)
+    country_name = country_name.split()
+
+    values[0] = country_name[0]
+
+    countries.append(values)
+
+print(countries)
