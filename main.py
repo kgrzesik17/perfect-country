@@ -3,6 +3,8 @@ import re
 
 # ['Quality of Life Index', 'Purchasing Power Index', 'Safety Index', 'Health Care Index', 'Cost of Living Index', 'Property Price to Income Ratio', 'Traffic Commute Time Index', 'Pollution Index', 'Climate Index ']
 weights = [0, 100, 100, 50, -50, 0, 0, 20, 20]  # weigths entered by user
+countries_to_analyze = 30
+
 max_values = [0, 0, 0, 0, 0, 0, 0, 0, 0]  # max values used to standartize the values
 
 r = requests.get('https://www.numbeo.com/quality-of-life/rankings_by_country.jsp')
@@ -12,7 +14,7 @@ countries = []  # countries with all the values
 pairs = []
 
 # add values to arrays
-for i in range(30):
+for i in range(countries_to_analyze):
     a = r.split('<tr')[i + 3]
     b = a.split('<td style="text-align: right">')
     values = []  # QoL, purchasing power, etc.
