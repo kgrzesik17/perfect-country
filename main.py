@@ -2,14 +2,14 @@ import requests
 import re
 
 weights = [0,  # Quality of Life Index
-           100,  # Purchasing Power Index
-           100,  # Safety Index
-           50,  # Health Care Index
-           -50,  # Cost of Living Index
+           0,  # Purchasing Power Index
+           0,  # Safety Index
+           0,  # Health Care Index
+           -0,  # Cost of Living Index
            -0, # Property Price to Income Ratio
            -0,  # Traffic Commute Time Index
-           -20,  # Pollution Index
-           20]  # Climate Index
+           -0,  # Pollution Index
+           0]  # Climate Index
 
 countries_to_analyze = 30  # by QoL
 
