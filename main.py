@@ -1,9 +1,17 @@
 import requests
 import re
 
-# ['Quality of Life Index', 'Purchasing Power Index', 'Safety Index', 'Health Care Index', 'Cost of Living Index', 'Property Price to Income Ratio', 'Traffic Commute Time Index', 'Pollution Index', 'Climate Index ']
-weights = [0, 100, 100, 50, -50, 0, 0, 20, 20]  # weigths entered by user
-countries_to_analyze = 30
+weights = [0,  # Quality of Life Index
+           100,  # Purchasing Power Index
+           100,  # Safety Index
+           50,  # Health Care Index
+           -50,  # Cost of Living Index
+           -0, # Property Price to Income Ratio
+           -0,  # Traffic Commute Time Index
+           -20,  # Pollution Index
+           20]  # Climate Index
+
+countries_to_analyze = 30  # by QoL
 
 max_values = [0, 0, 0, 0, 0, 0, 0, 0, 0]  # max values used to standartize the values
 
